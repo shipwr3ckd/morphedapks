@@ -10,7 +10,7 @@ body:
 
         - Speak English only.
         - This template is for issues with **built APKs** (e.g. wrong version selected, APK fails to install, signature mismatch).
-        - For bugs in the **build script itself**, use the **Script Bug Report** template instead.
+        - For bugs in the **build script itself**, use the [Script Bug Report](https://github.com/krvstek/uni-apks/issues/new?template=script.yml) template instead.
         - Do not submit a duplicate bug report.
         - If you have a **Question** or a **Suggestion**, please go to [Discussions](https://github.com/krvstek/uni-apks/discussions) instead.
 

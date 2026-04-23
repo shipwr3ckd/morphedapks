@@ -10,7 +10,7 @@ body:
 
         - Speak English only.
         - This template is for bugs in the **build script** (e.g. crashes, download failures, patching errors).
-        - For bugs in **patched applications**, use the **App Bug Report** template instead.
+        - For bugs in **patched applications**, use the [Build Result Bug Report](https://github.com/krvstek/uni-apks/issues/new?template=build.yml) template instead.
         - Do not submit a duplicate bug report.
         - If you have a **Question** or a **Suggestion**, please go to [Discussions](https://github.com/krvstek/uni-apks/discussions) instead.
 

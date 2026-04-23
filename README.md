@@ -46,6 +46,10 @@ Here you can download and use applications selected for this repository, which a
 | [![Instagram](https://img.shields.io/badge/Instagram-FF0069?style=flat-square&logo=instagram&logoColor=%23FFFFFF)](https://play.google.com/store/apps/details?id=com.instagram.android) | [![Obtainium](https://img.shields.io/badge/Import-Config-4500FF?style=flat-square&logo=obtainium&logoColor=%23FFFFFF)][instagram-piko] |
 </details>
 
+## 📚 Documentation & Contributing
+
+For full configuration reference, setup and contributing guide, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## ⚠️ Disclaimer
 
 - This project is **not affiliated with any patch creators mentioned here**, and is intended for educational & personal use only.
