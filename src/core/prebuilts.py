@@ -41,6 +41,7 @@ def get_highest_ver(versions: list[str]) -> str:
 def fetch_prebuilts(cli_src: str, cli_ver: str, patches_src: str, patches_ver: str, net: NetworkManager) -> Prebuilts:
     patches_org = patches_src.split("/")[0]
     cl_dir = TEMP_DIR / patches_org.lower()
+    cl_dir.mkdir(parents=True, exist_ok=True)
 
     pr(f"Getting prebuilts ({patches_org})")
     specs: list[tuple[str, str, str, str, str]] = [
