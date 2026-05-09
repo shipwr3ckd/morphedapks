@@ -162,7 +162,7 @@ def _build_single(entry: AppEntry, arch: str, table: str, net: NetworkManager, p
         _verify_sig(stock_apk, stock_apkm, pkg_name, patcher, table)
         apk_output = _apply_patch(entry, arch, version, force, patcher, list_patches, stock_apk, stock_apkm)
         pr(f"Built {table}: '{apk_output}'")
-        return f"🟢 » {table}: `{version}`"
+        return f"🟢 » {table}: [`⬇️ {version}`](../../releases/download/{{TAG}}/{apk_output.name})"
 
     except (BuilderError, PatcherError, ValueError) as exc:
         epr(f"Building '{table}' failed! {exc}")
@@ -218,7 +218,7 @@ def run_build(data: dict[str, object], config: Config, net: NetworkManager, targ
         return False
 
     changelogs = "".join(cl.read_text(encoding="utf-8") for cl in sorted(TEMP_DIR.glob("*/changelog.md")))
-    md_content = "\n".join([*log_lines, "", "- ▶️ » Install [MicroG-RE](https://github.com/MorpheApp/MicroG-RE/releases) for YouTube and YT Music APKs\n", changelogs])
+    md_content = "\n".join([*log_lines, "", "- ▶️ » Install [MicroG-RE](https://github.com/MorpheApp/MicroG-RE/releases) and sign in to use apps that require a Google account.\n", changelogs])
     Path("build.md").write_text(md_content, encoding="utf-8")
     pr("Done")
     return True
