@@ -1,14 +1,9 @@
-[YouTube-Essential-Patches]
-exclusive-patches = true
-included-patches = "'Bypass URL redirects' 'Disable Shorts resuming on startup' 'Downloads' 'Hide Shorts components' 'Hide ads' 'Open links externally' 'Override YouTube Music buttons' 'Playback speed' 'Remove background playback restrictions' 'Sanitize sharing links' 'Shorts autoplay' 'SponsorBlock' 'Spoof video streams' 'Video ads' 'Video quality'"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube"
-uptodown-dlurl = "https://youtube.en.uptodown.com/android"
 
 [YouTube]
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube"
 uptodown-dlurl = "https://youtube.en.uptodown.com/android"
 
-[Music]
+[YT-Music]
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
 uptodown-dlurl = "https://youtube-music.en.uptodown.com/android"
 arch = "both"
@@ -35,7 +30,7 @@ archive-dlurl = "https://archive.org/download/uni-src/apks/com.instagram.android
 # uptodown-dlurl = "https://instagram.en.uptodown.com/android"
 arch = "arm64-v8a"
 
-[X]
+[X-Twitter]
 patches-source = "crimera/piko"
 brand = "piko"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter"
