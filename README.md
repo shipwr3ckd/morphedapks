@@ -15,11 +15,9 @@
   - [TikTok](#tiktok)
   - [Prime Video](#prime-video)
   - [Disney+](#disney-plus)
-  - [Truecaller](#truecaller)
   - [Pinterest](#pinterest)
   - [WPS Office](#wps-office)
   - [Duolingo](#duolingo)
-  - [Telegram](#telegram)
   - [Viber](#viber)
   - [KakaoTalk](#kakaotalk)
   - [Pandora](#pandora)
@@ -27,7 +25,7 @@
   - [Twitch](#twitch)
   - [Cricbuzz](#cricbuzz)
   - [Strava](#strava)
-  - [Proton VPN](#proton-vpn)
+
   </details>
 
 - [🔥 Features](#-features)
@@ -132,13 +130,6 @@ Here you can download and use applications selected for this repository, which a
 <a href="https://github.com/nvbangg/builder-for-morphe/releases?q=Disney-Plus&expanded=true"><img src="https://img.shields.io/badge/Disney+-Download-gray?labelColor=113CCF&logo=Disney%2B&logoColor=white" alt="Disney+ Download"></a> <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.disney.disneyplus%22%2C%22name%22%3A%22Disney%20Plus%22%2C%22author%22%3A%22nvbangg%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fnvbangg%2Fbuilder-for-morphe%22%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22disney-plus%5C%22%7D%22%7D"><img src="https://img.shields.io/badge/Add_to-Obtainium-4500FF?logo=obtainium" alt="Add to Obtainium"></a>
 
 ---
-<h3 id="truecaller"><a href="https://play.google.com/store/apps/details?id=com.truecaller">Truecaller</a></h3>
-
-🧩 Paresh Maheshwari: <a href="https://nvbangg.github.io/awesome-for-morphe/?source=paresh-maheshwari&app=com.truecaller">View Details</a>
-
-<a href="https://github.com/nvbangg/builder-for-morphe/releases/download/64/truecaller-paresh-maheshwari-v26.10.6-all.apk"><img src="https://img.shields.io/badge/Truecaller-Download-gray?labelColor=0099FF&logo=truecaller&logoColor=white" alt="Truecaller Download"></a> <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.truecaller%22%2C%22name%22%3A%22Truecaller%22%2C%22author%22%3A%22nvbangg%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fnvbangg%2Fbuilder-for-morphe%22%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22truecaller%5C%22%7D%22%7D"><img src="https://img.shields.io/badge/Add_to-Obtainium-4500FF?logo=obtainium" alt="Add to Obtainium"></a>
-
----
 <h3 id="pinterest"><a href="https://play.google.com/store/apps/details?id=com.pinterest">Pinterest</a></h3>
 
 🧩 Binarymend: <a href="https://nvbangg.github.io/awesome-for-morphe/?source=binarymend&app=com.pinterest">View Details</a>
@@ -158,13 +149,6 @@ Here you can download and use applications selected for this repository, which a
 🧩 Hoo-dles: <a href="https://nvbangg.github.io/awesome-for-morphe/?source=hoo-dles&app=com.duolingo">View Details</a>
 
 <a href="https://github.com/nvbangg/builder-for-morphe/releases?q=Duolingo&expanded=true"><img src="https://img.shields.io/badge/Duolingo-Download-gray?labelColor=4DC730&logo=Duolingo&logoColor=white" alt="Duolingo Download"></a> <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.duolingo%22%2C%22name%22%3A%22Duolingo%22%2C%22author%22%3A%22nvbangg%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fnvbangg%2Fbuilder-for-morphe%22%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22duolingo%5C%22%7D%22%7D"><img src="https://img.shields.io/badge/Add_to-Obtainium-4500FF?logo=obtainium" alt="Add to Obtainium"></a>
-
----
-<h3 id="telegram"><a href="https://telegram.org/android">Telegram</a></h3>
-
-🧩 Paresh Maheshwari: <a href="https://nvbangg.github.io/awesome-for-morphe/?source=paresh-maheshwari&app=org.telegram.messenger.web">View Details</a>
-
-<a href="https://github.com/nvbangg/builder-for-morphe/releases/download/64/telegram-paresh-maheshwari-v12.6.4-all.apk"><img src="https://img.shields.io/badge/Telegram-Download-gray?labelColor=2CA5E0&logo=telegram&logoColor=white" alt="Telegram Download"></a> <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22org.telegram.messenger.web%22%2C%22name%22%3A%22Telegram%22%2C%22author%22%3A%22nvbangg%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fnvbangg%2Fbuilder-for-morphe%22%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22telegram%5C%22%7D%22%7D"><img src="https://img.shields.io/badge/Add_to-Obtainium-4500FF?logo=obtainium" alt="Add to Obtainium"></a>
 
 ---
 <h3 id="viber"><a href="https://play.google.com/store/apps/details?id=com.viber.voip">Rakuten Viber Messenger</a></h3>
@@ -214,13 +198,6 @@ Here you can download and use applications selected for this repository, which a
 🧩 RookieEnough: <a href="https://nvbangg.github.io/awesome-for-morphe/?source=rookieenough&app=com.strava">View Details</a>
 
 <a href="https://github.com/nvbangg/builder-for-morphe/releases?q=Strava&expanded=true"><img src="https://img.shields.io/badge/Strava-Download-gray?labelColor=FC4C02&logo=Strava&logoColor=white" alt="Strava Download"></a> <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.strava%22%2C%22name%22%3A%22Strava%22%2C%22author%22%3A%22nvbangg%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fnvbangg%2Fbuilder-for-morphe%22%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22strava%5C%22%7D%22%7D"><img src="https://img.shields.io/badge/Add_to-Obtainium-4500FF?logo=obtainium" alt="Add to Obtainium"></a>
-
----
-<h3 id="proton-vpn"><a href="https://play.google.com/store/apps/details?id=ch.protonvpn.android">Proton VPN</a>: Fast & Secure VPN</h3>
-
-🧩 Paresh Maheshwari: <a href="https://nvbangg.github.io/awesome-for-morphe/?source=paresh-maheshwari&app=ch.protonvpn.android">View Details</a>
-
-<a href="https://github.com/nvbangg/builder-for-morphe/releases/download/64/proton-vpn-paresh-maheshwari-v5.17.72.0-all.apk"><img src="https://img.shields.io/badge/Proton_VPN-Download-gray?labelColor=6D4AFF&logo=protonvpn&logoColor=white" alt="Proton VPN Download"></a> <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22ch.protonvpn.android%22%2C%22name%22%3A%22Proton%20VPN%22%2C%22author%22%3A%22nvbangg%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fnvbangg%2Fbuilder-for-morphe%22%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22proton-vpn%5C%22%7D%22%7D"><img src="https://img.shields.io/badge/Add_to-Obtainium-4500FF?logo=obtainium" alt="Add to Obtainium"></a>
 
 ---
 ## 📚 Documentation & Contributing

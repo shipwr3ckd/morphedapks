@@ -61,11 +61,6 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/disney/disney/"
 uptodown-dlurl = "https://disney-disneyplus.en.uptodown.com/android"
 version = "26.6.0+rc5-2026.04.21"
 
-# [Truecaller]
-# patches-source = "Paresh-Maheshwari/paresh-patches"
-# brand = "Paresh-Maheshwari"
-# apkmirror-dlurl = "https://www.apkmirror.com/apk/true-software-scandinavia-ab/truecaller-caller-id-block/"
-
 [Pinterest]
 patches-source = "binarymend/morphe-patches"
 brand = "binarymend"
@@ -83,12 +78,6 @@ patches-source = "hoo-dles/morphe-patches"
 brand = "hoo-dles"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/duolingo/duolingo-duolingo/"
 uptodown-dlurl = "https://duolingo.en.uptodown.com/android"
-
-# [Telegram]
-# patches-source = "Paresh-Maheshwari/paresh-patches" 
-# brand = "Paresh-Maheshwari"
-# apkmirror-dlurl = "https://www.apkmirror.com/apk/telegram-fz-llc/telegram/"
-# uptodown-dlurl = "https://telegram.en.uptodown.com/android"
 
 [Viber]
 patches-source = "RookieEnough/De-ReVanced"
@@ -129,9 +118,3 @@ patches-source = "RookieEnough/De-ReVanced"
 brand = "rookie-enough"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/strava-inc/strava-running-and-cycling-gps/"
 uptodown-dlurl = "https://strava.en.uptodown.com/android"
-
-# [Proton-VPN]
-# patches-source = "Paresh-Maheshwari/paresh-patches"
-# brand = "Paresh-Maheshwari"
-# apkmirror-dlurl = "https://www.apkmirror.com/apk/proton-technologies-ag/protonvpn-secure-and-free-vpn/"
-# uptodown-dlurl = "https://protonvpn.en.uptodown.com/android"
