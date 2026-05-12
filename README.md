@@ -39,7 +39,7 @@
 
 Here you can download and use applications selected for this repository, which are enhanced with many functionalities that will certainly be useful to you.
 
-<a href="https://github.com/nvbangg/builder-for-morphe/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/nvbangg/builder-for-morphe/ci.yml?label=CI&logo=githubactions&logoColor=white" alt="CI"></a>　<a href="https://github.com/nvbangg/builder-for-morphe/releases"><img src="https://img.shields.io/github/downloads/nvbangg/builder-for-morphe/total?logo=data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmZmZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNSAyMGgxNHYtMkg1djJ6TTE5IDloLTRWM0g5djZINWw3IDcgNy03eiIvPjwvc3ZnPg==&label=Downloads" alt="Releases"></a>　<a href="https://github.com/nvbangg/builder-for-morphe"><img src="https://img.shields.io/github/stars/nvbangg/builder-for-morphe?label=Star%20this%20repo%20if%20useful%20⭐&logo=github" alt="Stars"></a>　<a href="https://github.com/sponsors/nvbangg"><img src="https://img.shields.io/badge/Support-pink?style=social&logo=github-sponsors" alt="Sponsor"></a>　<a href="https://github.com/nvbangg/awesome-for-morphe"><img src="https://img.shields.io/badge/%F0%9F%94%97%20Related%20Repo-awesome--for--morphe-blue" alt="Related Repo"></a>
+<a href="https://github.com/nvbangg/builder-for-morphe/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/nvbangg/builder-for-morphe/ci.yml?label=CI&logo=githubactions&logoColor=white" alt="CI"></a>　<a href="https://github.com/nvbangg/builder-for-morphe/releases"><img src="https://img.shields.io/github/downloads/nvbangg/builder-for-morphe/total?logo=data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmZmZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNSAyMGgxNHYtMkg1djJ6TTE5IDloLTRWM0g5djZINWw3IDcgNy03eiIvPjwvc3ZnPg==&label=Downloads" alt="Releases"></a>　<a href="https://github.com/nvbangg/builder-for-morphe"><img src="https://img.shields.io/github/stars/nvbangg/builder-for-morphe?label=Star%20this%20repo%20if%20useful%20%E2%AD%90&logo=github" alt="Stars"></a>　<a href="https://github.com/sponsors/nvbangg"><img src="https://img.shields.io/badge/Support-pink?style=social&logo=github-sponsors" alt="Sponsor"></a>　<a href="https://github.com/nvbangg/awesome-for-morphe"><img src="https://img.shields.io/badge/%F0%9F%94%97%20Related%20Repo-awesome--for--morphe-blue" alt="Related Repo"></a>
 
 </div>
 
@@ -213,13 +213,14 @@ For those of you who would like to be 100% sure that the APK files you download 
 
 ### 🙏 Credits
 
-This repository was generated from the [krvstek/uni-apks](https://github.com/krvstek/uni-apks) template (GPL-3.0), with the following changes:
+This repository was generated from the [krvstek/uni-apks](https://github.com/krvstek/uni-apks) template (licensed under GPL-3.0), with the following changes:
 - Support for GitHub Pages deployment
 - Support for additional apps
 - UI and configuration improvements
 - Immutable release support
 - Direct download links in release notes
 
+---
 ## ⚠️ Disclaimer <a id="disclaimer"></a>
 
 - This project is **not affiliated with any patch creators mentioned here**, and is intended for educational & personal use only.
@@ -228,10 +229,11 @@ This repository was generated from the [krvstek/uni-apks](https://github.com/krv
 - The build code is a **complete Python rewrite** based on an adaptation that was first implemented by *[j-hc](https://github.com/j-hc)*. All credits go to him for laying down the initial foundation.
 - This repository only provides pre-built APKs. If a build fails due to upstream app or patch changes, please report it to the patch creators or wait for an update.
 
+---
 ## ⭐ Star History <a id="star-history"></a>
 
 <div>
-<a href="https://github.com/nvbangg/builder-for-morphe"><img src="https://img.shields.io/github/stars/nvbangg/builder-for-morphe?label=Star%20this%20repo%20if%20useful%20⭐&logo=github" alt="Stars"></a>　<a href="https://github.com/sponsors/nvbangg"><img src="https://img.shields.io/badge/Support-pink?style=social&logo=github-sponsors" alt="Sponsor"></a>
+<a href="https://github.com/nvbangg/builder-for-morphe"><img src="https://img.shields.io/github/stars/nvbangg/builder-for-morphe?label=Star%20this%20repo%20if%20useful%20%E2%AD%90&logo=github" alt="Stars"></a>　<a href="https://github.com/sponsors/nvbangg"><img src="https://img.shields.io/badge/Support-pink?style=social&logo=github-sponsors" alt="Sponsor"></a>
 
 <a href="https://www.star-history.com/?repos=nvbangg%2Fbuilder-for-morphe&type=date&legend=top-left">
  <picture>
