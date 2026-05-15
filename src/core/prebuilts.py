@@ -38,10 +38,16 @@ def fetch_prebuilts(cli_src: str, cli_ver: str, patches_src: str, patches_ver: s
     ]
     with ThreadPoolExecutor(max_workers=2) as pool:
         futures = [pool.submit(_fetch_single_asset, *spec, cl_dir=cl_dir, net=net) for spec in specs]
-        cli_jar, patches_mpp = (f.result() for f in futures)
+        results = [f.result() for f in futures]
+    (cli_jar, cli_changelog), (patches_mpp, patches_changelog) = results
+    combined = cli_changelog + patches_changelog
+    if combined:
+        with (cl_dir / "changelog.md").open("a", encoding="utf-8") as f:
+            f.write(combined)
+
     return Prebuilts(cli_jar=cli_jar, patches_mpp=patches_mpp)
 
-def _fetch_single_asset(src: str, tag: str, ver: str, fprefix: str, ext: str, cl_dir: Path, net: NetworkManager) -> Path:
+def _fetch_single_asset(src: str, tag: str, ver: str, fprefix: str, ext: str, cl_dir: Path, net: NetworkManager) -> tuple[Path, str]:
     dir_path = TEMP_DIR / src.split("/")[0].lower()
     dir_path.mkdir(parents=True, exist_ok=True)
     base_url = f"https://api.github.com/repos/{src}/releases"
@@ -54,7 +60,7 @@ def _fetch_single_asset(src: str, tag: str, ver: str, fprefix: str, ext: str, cl
         ver = release.get("tag_name", "")
 
     file = _find_cached(dir_path, fprefix, ver, ext, exclude_dev=False)
-    grab_cl = tag == "Patches" and file is None
+    is_patches = tag == "Patches"
     tag_name = ""
     changelog = ""
 
@@ -82,12 +88,9 @@ def _fetch_single_asset(src: str, tag: str, ver: str, fprefix: str, ext: str, cl
     else:
         tag_name = _tag_from_filename(file)
 
-    if grab_cl and tag_name:
+    if is_patches and tag_name:
         changelog += f"[🔗 » Changelog](https://github.com/{src}/releases/tag/{tag_name})\n\n"
-    if changelog:
-        with (cl_dir / "changelog.md").open("a", encoding="utf-8") as f:
-            f.write(changelog)
-    return file
+    return file, changelog
 
 def _find_cached(dir_path: Path, fprefix: str, name_ver: str, ext: str, exclude_dev: bool) -> Path | None:
     pattern = f"*{fprefix}-*.{ext}" if name_ver == "*" else f"*{fprefix}-{name_ver.lstrip('v')}*.{ext}"
