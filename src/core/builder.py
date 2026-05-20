@@ -8,7 +8,7 @@ from copy import replace
 from pathlib import Path
 
 from src.core.config import BUILD_DIR, TEMP_DIR, AppEntry, Config, parse_app_entries
-from src.core.logger import abort, epr, pr
+from src.core.logger import abort, epr, pr, wpr
 from src.core.network import NetworkManager
 from src.core.patcher import PatcherCLI, PatcherError
 from src.core.prebuilts import APKSIGNER, Prebuilts, fetch_prebuilts, get_highest_ver
@@ -105,7 +105,15 @@ def _extract_base_apk(apkm: Path, pkg_name: str, dest_dir: Path) -> Path:
                 return dest_dir / name
     raise BuilderError(f"Neither 'base.apk' nor '{pkg_name}.apk' found inside {apkm.name}")
 
-def _verify_sig(stock_apk: Path, stock_apkm: Path, pkg_name: str, patcher: PatcherCLI, table: str) -> None:
+def _verify_sig(stock_apk: Path, stock_apkm: Path, pkg_name: str, patcher: PatcherCLI, table: str, skip_sigcheck: bool) -> None:
+    expected = patcher._signatures.get(pkg_name)
+    if not expected or not expected.strip():
+        raise BuilderError(f"No signature entry found in sig.txt for '{pkg_name}' ('{table}')")
+
+    if skip_sigcheck:
+        wpr(f"Skipping APK signature verification for '{table}'")
+        return
+
     try:
         if stock_apkm.exists():
             with tempfile.TemporaryDirectory(dir=TEMP_DIR) as tmp_dir:
@@ -141,7 +149,7 @@ def _build_single(entry: AppEntry, arch: str, label: str, net: NetworkManager, p
         list_patches = patcher.list_patches(pkg_name)
         version, force = _resolve_version(entry, patcher, list_patches, pkg_name, dl_from, cache)
         stock_apk, stock_apkm = _download_apk(entry, version, arch, pkg_name, net, cache)
-        _verify_sig(stock_apk, stock_apkm, pkg_name, patcher, label)
+        _verify_sig(stock_apk, stock_apkm, pkg_name, patcher, label, entry.skip_sigcheck)
         apk_output = _apply_patch(entry, arch, version, force, patcher, list_patches, stock_apk, stock_apkm)
         pr(f"Built {label}: '{apk_output}'")
         if os.getenv("GITHUB_ACTIONS") == "true":

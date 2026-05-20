@@ -37,6 +37,7 @@ class AppEntry:
     cli_source: str
     patches_version: str
     cli_version: str
+    skip_sigcheck: bool
     enabled: bool
 
     @property
@@ -94,6 +95,7 @@ def parse_app_entries(data: dict[str, object], main: Config) -> list[AppEntry]:
             cli_source=str(t.get("cli-source", main.cli_source)),
             patches_version=str(t.get("patches-version", main.patches_version)),
             cli_version=str(t.get("cli-version", main.cli_version)),
+            skip_sigcheck=_parse_bool(t.get("skip-sigcheck", False), "skip-sigcheck"),
             enabled=_parse_bool(t.get("enabled", True), "enabled"),
         ))
     return entries

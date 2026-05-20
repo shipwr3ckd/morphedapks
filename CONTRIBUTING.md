@@ -70,11 +70,21 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
 | `excluded-patches` | Patches to exclude - names must be single-quoted | `-` |
 | `exclusive-patches` | Only apply `included-patches`, exclude everything else | `false` |
 | `patcher-args` | Extra arguments passed directly to Morphe CLI | `-` |
+| `skip-sigcheck` | Skip APK signature verification (see note below) | `false` |
 | `enabled` | Set to `false` to skip this entry | `true` |
 
 > [!NOTE]
 > If a patch name contains a single quote, you must wrap the specific patch name in escaped double quotes.  
 > Example: `included-patches = "'Example patch' \"Hide 'Example button'\" 'Another example patch'"`
+
+> [!WARNING]
+> **`skip-sigcheck = true` does NOT bypass the `sig.txt` requirement.**
+> The build will still fail if the app's signature is missing. You must provide the original SHA-256 certificate fingerprint in `sig.txt` using one of two methods:
+> 
+> * **Method 1 (Quick):** Copy the original SHA-256 fingerprint directly from a trusted source like **APKMirror** (listed on every APK download page).
+> * **Method 2 (Manual):** Use the provided toolchain on the original, unmodified APK: `java -jar apksigner.jar verify --print-certs <app.apk>`
+> 
+> Format for `sig.txt`: `<sha256-fingerprint>  <package.name>`
 
 2. ➕ **Adding a new patch source**:
 
