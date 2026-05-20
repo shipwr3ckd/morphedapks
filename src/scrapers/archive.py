@@ -36,7 +36,7 @@ class ArchiveScraper(BaseScraper):
         version = version.replace(" ", "").lstrip("v")
         expected_prefix = f"{self._pkg_name}-{version}-{arch.replace(' ', '')}"
         if not (match := next((f for f in self._file_list if f.startswith(expected_prefix)), None)):
-            raise ArchiveError(f"Archive: no file matching version='{version}' arch='{arch}' in {url}")
+            raise ArchiveError("No matching file")
 
         is_bundle = match.endswith((".apkm", ".xapk"))
         out_path = dest.with_name(f"{dest.name}{'.apkm' if is_bundle else ''}")

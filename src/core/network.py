@@ -14,6 +14,9 @@ from src.core.logger import epr, pr
 class NetworkError(Exception):
     pass
 
+class ResourceNotFoundError(NetworkError):
+    """Raised when a remote resource returns HTTP 404."""
+
 class NetworkManager:
     def __init__(self) -> None:
         self.session = requests.Session(impersonate="firefox147")
@@ -38,6 +41,8 @@ class NetworkManager:
             with self._get_domain_lock(url):
                 time.sleep(0.5)
                 resp = self.session.get(url, timeout=(5, 10), allow_redirects=True, headers=headers, verify=True)
+            if resp.status_code == 404:
+                raise ResourceNotFoundError(f"Not found (404): {url}")
             if resp.status_code >= 400:
                 epr(f"HTTP {resp.status_code} for {url}")
                 resp.raise_for_status()
