@@ -84,6 +84,7 @@ def _fetch_single_asset(src: str, tag: str, ver: str, fprefix: str, ext: str, cl
             if old_file.is_file() and not old_file.name.startswith("tmp."):
                 old_file.unlink(missing_ok=True)
 
+        pr(f"Getting '{asset['name']}' from '{asset['url']}'")
         net.gh_download(asset["url"], file)
         changelog = f"> ⚙️ » {tag}: `{src.split('/')[0]}/{asset['name']}`  \n"
     else:

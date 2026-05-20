@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 from curl_cffi import requests
 from curl_cffi.requests import exceptions as req_exc
 
-from src.core.logger import epr, pr
+from src.core.logger import epr
 
 
 class NetworkError(Exception):
@@ -79,7 +79,6 @@ class NetworkManager:
                 tmp.unlink(missing_ok=True)
 
     def gh_download(self, url: str, dest: Path) -> None:
-        pr(f"Getting '{dest.name}' from '{url}'")
         self.download(url, dest, headers=self._gh_headers | {"Accept": "application/octet-stream"})
 
     def __enter__(self) -> Self:

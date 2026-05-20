@@ -17,25 +17,27 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/redditinc/reddit"
 patcher-args = "-e 'Custom branding name for Reddit' -OappName='Morphe Reddit'"
 
 [X]
-uptodown-dlurl = "https://twitter.en.uptodown.com/android"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter"
+# uptodown-dlurl = "https://twitter.en.uptodown.com/android"
+# apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter"
+github-dlurl = "https://github.com/krvstek/uni-storage/releases/tag/x-twitter"
 patches-source = "crimera/piko"
 brand = "Piko"
 included-patches = "'Browse tweet object' 'Dynamic color'"
-version = "11.81.0-release.0"
+skip-sigcheck = true
 
 [Twitter]
-uptodown-dlurl = "https://twitter.en.uptodown.com/android"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter"
+# uptodown-dlurl = "https://twitter.en.uptodown.com/android"
+# apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter"
+github-dlurl = "https://github.com/krvstek/uni-storage/releases/tag/x-twitter"
 patches-source = "crimera/piko"
 brand = "Piko"
 included-patches = "'Bring back twitter' 'Browse tweet object' 'Dynamic color'"
-version = "11.81.0-release.0"
+skip-sigcheck = true
 
 [Instagram]
 # uptodown-dlurl = "https://instagram.en.uptodown.com/android"
 # apkmirror-dlurl = "https://www.apkmirror.com/apk/instagram/instagram-instagram"
-archive-dlurl = "https://archive.org/download/uni-src/apks/com.instagram.android"
+github-dlurl = "https://github.com/krvstek/uni-storage/releases/tag/instagram"
 patches-source = "crimera/piko"
 brand = "Piko"
 arch = "arm64-v8a"

@@ -20,16 +20,16 @@ class BuilderError(Exception):
 
 def _make_scraper(source: str, net: NetworkManager) -> BaseScraper:
     from src.scrapers.apkmirror import APKMirrorScraper
-    from src.scrapers.archive import ArchiveScraper
+    from src.scrapers.github import GitHubScraper
     from src.scrapers.uptodown import UptodownScraper
 
     match source:
         case "apkmirror":
             return APKMirrorScraper(net)
+        case "github":
+            return GitHubScraper(net)
         case "uptodown":
             return UptodownScraper(net)
-        case "archive":
-            return ArchiveScraper(net)
         case _:
             raise ValueError(f"Unknown APK source: {source!r}")
 
@@ -49,7 +49,7 @@ def _find_pkg_name(entry: AppEntry, net: NetworkManager) -> tuple[str, str, dict
             pr(f"Package name of '{entry.table}' is '{metadata.pkg_name}'")
             return metadata.pkg_name, src, cache
         except Exception as exc:
-            epr(f"Could not find {entry.table} in {src}: {exc}")
+            epr(f"Could not find '{entry.table}' in '{src}': {exc}")
     raise BuilderError(f"Package name not found for '{entry.table}'")
 
 def _resolve_version(entry: AppEntry, patcher: PatcherCLI, list_patches: str, pkg_name: str, dl_from: str, cache: dict) -> tuple[str, bool]:

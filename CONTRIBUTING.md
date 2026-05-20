@@ -47,7 +47,7 @@ All configuration lives in `config.toml` in the project root. Top-level keys def
 [SomeApp]
 apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
 # or uptodown-dlurl = "https://app.en.uptodown.com/android"
-# or archive-dlurl = "https://archive.org/details/app"
+# or github-dlurl = "https://github.com/<owner>/<repo>/releases/tag/app"
 ```
 
 1. 📱 **Available options**:
@@ -65,7 +65,7 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
 | `version` | Target version (`auto`, `latest`, or a specific version string) | `auto` |
 | `apkmirror-dlurl` | APKMirror page URL | `-` |
 | `uptodown-dlurl` | Uptodown page URL | `-` |
-| `archive-dlurl` | Archive.org page URL | `-` |
+| `github-dlurl` | GitHub Releases page URL | `-` |
 | `included-patches` | Patches to include - names must be single-quoted | `-` |
 | `excluded-patches` | Patches to exclude - names must be single-quoted | `-` |
 | `exclusive-patches` | Only apply `included-patches`, exclude everything else | `false` |

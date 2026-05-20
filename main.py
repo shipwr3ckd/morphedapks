@@ -22,10 +22,10 @@ from src.core.network import NetworkError, NetworkManager
 from src.core.patcher import PatcherError
 from src.core.prebuilts import PrebuiltsError
 from src.scrapers.apkmirror import APKMirrorError
-from src.scrapers.archive import ArchiveError
+from src.scrapers.github import GitHubReleasesError
 from src.scrapers.uptodown import UptodownError
 
-_KNOWN_ERRORS = (NetworkError, PrebuiltsError, PatcherError, APKMirrorError, ArchiveError, UptodownError)
+_KNOWN_ERRORS = (NetworkError, PrebuiltsError, PatcherError, APKMirrorError, GitHubReleasesError, UptodownError)
 _shutting_down = threading.Event()
 
 def _load_dotenv(path: Path = Path(".env")) -> None:
