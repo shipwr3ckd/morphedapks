@@ -10,6 +10,9 @@ on:
         options:
           - morphe
           - piko
+          - rookie-enough
+          - hoo-dles
+          - ample-revanced
   workflow_call:
     inputs:
       patch_source:
