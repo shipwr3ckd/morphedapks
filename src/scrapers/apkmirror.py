@@ -77,43 +77,41 @@ class APKMirrorScraper(BaseScraper):
         return None
 
     def _search(self, rows: list, dpi: str, arch: str, bundle_type: str) -> str:
-    appdpi = {"nodpi", "anydpi", "120-640dpi"}
-    if dpi:
-        appdpi.add(dpi.lower())
+        appdpi = {"nodpi", "anydpi", "120-640dpi"}
+        if dpi:
+            appdpi.add(dpi.lower())
 
-    arch_aliases = {
-        "arm-v7a": ("armeabi-v7a", "armeabi"),
-        "arm64-v8a": ("arm64-v8a",),
-        "x86": ("x86",),
-        "x86_64": ("x86_64", "x86-64"),
-    }
+        arch_aliases = {
+            "arm-v7a": ("armeabi-v7a", "armeabi"),
+            "arm64-v8a": ("arm64-v8a",),
+            "x86": ("x86",),
+            "x86_64": ("x86_64", "x86-64"),
+        }
 
-    for row in reversed(rows):
-        link = row.select_one("div.table-cell:first-child > a")
-        if not link or not link.get("href"):
-            continue
+        for row in reversed(rows):
+            link = row.select_one("div.table-cell:first-child > a")
+            if not link or not link.get("href"):
+                continue
 
-        cells = row.select("div.table-cell")
-        if len(cells) < 4:
-            continue
+            cells = row.select("div.table-cell")
+            if len(cells) < 4:
+                continue
 
-        badge = cells[0].select_one(".apkm-badge")
-        b_type = badge.get_text(strip=True).upper() if badge else "APK"
+            badge = cells[0].select_one(".apkm-badge")
+            b_type = badge.get_text(strip=True).upper() if badge else "APK"
 
-        arch_text = cells[1].get_text(strip=True).lower()
-        dpi_text = cells[3].get_text(strip=True).lower()
+            arch_text = cells[1].get_text(strip=True).lower()
+            dpi_text = cells[3].get_text(strip=True).lower()
 
-        if arch == "all":
-            arch_match = True
-        elif arch_text in ("universal", "noarch"):
-            arch_match = True
-        else:
-            aliases = arch_aliases.get(arch, (arch,))
-            arch_match = any(a in arch_text for a in aliases)
+            if arch == "all":
+                arch_match = True
+            elif arch_text in ("universal", "noarch"):
+                arch_match = True
+            else:
+                aliases = arch_aliases.get(arch, (arch,))
+                arch_match = any(a in arch_text for a in aliases)
 
-        if b_type == bundle_type and dpi_text in appdpi and arch_match:
-            return urljoin(APK_MIRROR_BASE, str(link["href"]))
-
-    return ""
+            if b_type == bundle_type and dpi_text in appdpi and arch_match:
+                return urljoin(APK_MIRROR_BASE, str(link["href"]))
 
         return ""
