@@ -52,12 +52,6 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/amazon-mobile-llc/amazon-music-
 uptodown-dlurl = "https://amazon-mp3.en.uptodown.com/android"
 version = "26.14.2"
 
-[Cricbuzz]
-patches-source = "github:RookieEnough/De-Vanced"
-brand = "de-vanced"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/cricbuzz-com/cricbuzz-live-cricket-scores-news/"
-uptodown-dlurl = "https://cricbuzz-cricket-scores-and-news.en.uptodown.com/android"
-
 [Disney-Plus]
 patches-source = "github:RookieEnough/De-Vanced"
 brand = "de-vanced"
@@ -268,6 +262,68 @@ patches-source = "github:hoo-dles/morphe-patches"
 brand = "hoo-dles"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/inshot-inc-2/screen-recorder-video-recorder-xrecorder/"
 uptodown-dlurl = "https://videoeditor-videorecorder-screenrecorder.en.uptodown.com/android"
+
+[CREX]
+patches-source = "gitlab:Paresh-Maheshwari/paresh-patches"
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/cricket-exchange/cricket-exchange-live-score-analysis/"
+uptodown-dlurl = "https://live-line-and-cricket-scores-cricket-exchange.en.uptodown.com/android"
+
+[Cricbuzz]
+patches-source = "gitlab:Paresh-Maheshwari/paresh-patches"
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/cricbuzz-com/cricbuzz-live-cricket-scores-news/"
+uptodown-dlurl = "https://cricbuzz-cricket-scores-and-news.en.uptodown.com/android"
+
+[Document-Scanner]
+patches-source = "gitlab:Paresh-Maheshwari/paresh-patches"
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/lufick/document-scanner-pdf-creator/"
+uptodown-dlurl = "https://doc-scanner.en.uptodown.com/android"
+
+[Eyecon]
+patches-source = "gitlab:Paresh-Maheshwari/paresh-patches"
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/eyecon-phone-dialer-contacts/eyecon-caller-id-spam-block/"
+uptodown-dlurl = "https://eyecon-phone-dialer-and-cont-eyecon.en.uptodown.com/android"
+
+[Fing]
+patches-source = "gitlab:Paresh-Maheshwari/paresh-patches"
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/fing-limited/fing-network-tools/"
+uptodown-dlurl = "https://fing-network-tools.en.uptodown.com/android"
+
+[JioHotstar]
+patches-source = "gitlab:Paresh-Maheshwari/paresh-patches"
+brand = "paresh"
+github-dlurl = "https://github.com/ngbangg/builder-for-morphe/releases/tag/in.startv.hotstar"
+# apkmirror-dlurl = "https://www.apkmirror.com/apk/jiostar-india-private-limited/hotstar-2/"
+
+[Proton-VPN]
+patches-source = "gitlab:Paresh-Maheshwari/paresh-patches"
+brand = "paresh"
+github-dlurl = "https://github.com/ngbangg/builder-for-morphe/releases/tag/ch.protonvpn.android"
+# apkmirror-dlurl = "https://www.apkmirror.com/apk/proton-technologies-ag/protonvpn-secure-and-free-vpn/"
+# uptodown-dlurl = "https://protonvpn.en.uptodown.com/android"
+skip-sigcheck = true
+
+[Telegram]
+patches-source = "gitlab:Paresh-Maheshwari/paresh-patches"
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/telegram-fz-llc/telegram-web-version/"
+uptodown-dlurl = "https://telegram.en.uptodown.com/android"
+
+[Truecaller]
+patches-source = "gitlab:Paresh-Maheshwari/paresh-patches"
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/true-software-scandinavia-ab/truecaller-caller-id-block/"
+uptodown-dlurl = "https://truecaller.en.uptodown.com/android"
+
+[VN]
+patches-source = "gitlab:Paresh-Maheshwari/paresh-patches"
+brand = "paresh"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/ubiquiti-labs-llc/vn-video-editor-maker-vlognow/"
+uptodown-dlurl = "https://vn-video-editor.en.uptodown.com/android"
 
 [KakaoTalk]
 patches-source = "github:AmpleReVanced/revanced-patches"

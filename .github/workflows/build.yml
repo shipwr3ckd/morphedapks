@@ -12,6 +12,7 @@ on:
           - piko
           - hoo-dles
           - de-vanced
+          - paresh
           - ample
   workflow_call:
     inputs:
