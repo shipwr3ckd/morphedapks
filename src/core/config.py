@@ -54,7 +54,7 @@ def _parse_bool(d: dict[str, object], key: str, default: bool) -> bool:
 
 def parse_config(data: dict[str, object]) -> Config:
     return Config(
-        parallel_jobs=int(data.get("parallel-jobs", os.cpu_count() or 1)),
+        parallel_jobs=int(data.get("parallel-jobs", os.process_cpu_count() or 1)),
         brand=str(data.get("brand", "Morphe")),
         patches_version=str(data.get("patches-version", "latest")),
         cli_version=str(data.get("cli-version", "latest")),

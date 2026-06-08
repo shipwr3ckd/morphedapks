@@ -37,7 +37,7 @@ def _handle_status(resp, url: str, attempt: int) -> bool:
 
 class NetworkManager:
     def __init__(self) -> None:
-        self.session = requests.Session(impersonate="firefox147")
+        self.session = requests.Session(impersonate="chrome146")
         token = os.getenv("GITHUB_TOKEN")
         self._gh_headers: dict[str, str] = {"Authorization": f"token {token}"} if token else {}
         self._domain_locks: dict[str, threading.Lock] = {}

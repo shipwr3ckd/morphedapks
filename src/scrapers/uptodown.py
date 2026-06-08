@@ -21,12 +21,12 @@ class UptodownScraper(BaseScraper):
     def fetch_metadata(self, url: str) -> AppMetadata:
         self._resp_html = self.net.get(f"{url}/versions")
         pkg_html = self.net.get(f"{url}/download")
-        
-        try:
-            btn = _parse_html(pkg_html).select_one("#gplay-button")
-            pkg_name = btn["data-url"].split("?id=")[-1]
-        except (AttributeError, KeyError, IndexError):
-            raise UptodownError("Package name not found") from None
+        soup_pkg = _parse_html(pkg_html)
+        th = soup_pkg.find("th", string="Package Name")
+        if th and (td := th.find_next_sibling("td")):
+            pkg_name = td.get_text(strip=True)
+        else:
+            raise UptodownError("Package name not found")
 
         soup_ver = _parse_html(self._resp_html)
         versions: list[str] = []
