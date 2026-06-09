@@ -60,11 +60,10 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
 | `patches-source` | GitHub or GitLab repo for patches (`github:owner/repo` or `gitlab:owner/repo`) | `github:MorpheApp/morphe-patches` | Global / Per-app |
 | `cli-source` | GitHub or GitLab repo for CLI (`github:owner/repo` or `gitlab:owner/repo`) | `github:MorpheApp/morphe-cli` | Global / Per-app |
 | `strict-sigcheck` | Fail the build if an app is missing from `sig.txt` (see note below) | `true` | **Global only** |
-| `build-changed-only` | List of brands to build only when their apps are mentioned in the release notes | `[]` | **Global only** |
 | `app-name` | Display name used in output filename | `table name` | Per-app |
 | `arch` | Target architecture (`all`, `both`, `arm64-v8a`, `armeabi-v7a`, `x86_64`, `x86`) | `all` | Per-app |
 | `version` | Target version (`auto`, `latest`, or a specific version string) | `auto` | Per-app |
-| `changelog-keywords` | List of keywords used to detect if this app was updated in the release notes | `[table name]` | Per-app |
+| `changelog-keywords` | List of keywords used to detect if this app was updated in the release notes | `[]` | Per-app |
 | `apkmirror-dlurl` | APKMirror page URL | `-` | Per-app |
 | `uptodown-dlurl` | Uptodown page URL | `-` | Per-app |
 | `github-dlurl` | GitHub Releases page URL | `-` | Per-app |
@@ -99,15 +98,12 @@ Acts as a total bypass of signature verification for one specific app.
 > 
 > Format for `sig.txt`: `<sha256-fingerprint>  <package.name>`
 
-3. 🤖 **Smart Build (build-changed-only)**:
+3. 🤖 **Smart Build**:
 
-When a brand is added to the `build-changed-only` global list, the CI will only build applications under that brand if their release keywords are found in the upstream patch release notes.
+When `changelog-keywords` are defined for an application, the CI will only build that app if its keywords are found in the upstream patch release notes.
 
-* `build-changed-only` **(Global root level only | Default: `[]`)**  
-A list of brand names (case-insensitive) to enable this behavior.
-
-* `changelog-keywords` **(Per-app level only | Default: `[table name]`)**  
-A list of keyword strings to search for in the release notes. If not specified, it defaults to the lowercase table name with hyphens replaced by spaces.
+* `changelog-keywords` **(Per-app level only | Default: `[]`)**  
+A list of keyword strings to search for in the release notes. If not specified, the app will always be built regardless of changelog content.
 
 4. ➕ **Adding a new patch source**:
 
