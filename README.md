@@ -14,16 +14,6 @@ Here you can download and use applications selected for this repository, which a
 
 </div>
 
-## 🔥 Features
-
-- 🛑 **Ad-blocking**: blocks all types of ads (who needs them anyway?).
-- 🚀 **Enhanced features**: squeezes more out of the app.
-- ⭐ **Customization**: personalize the app to fit your needs.
-- 💉 **Optimization**: optimized APKs for performance and size.
-- 🔒 **Persistent**: patched app won't be updated or overwritten by Play Store.
-- 🔄 **Auto-updates**: supports automatic updates through [Obtainium](https://github.com/ImranR98/Obtainium) using individual configs (see app list below).
-- ✨ **And much more!**
-
 > [!NOTE]
 > 🔍 This project is fully open-source and transparent.  
 > 🔏 Uses trusted APK sources with signature verification for security.  
@@ -148,18 +138,24 @@ Here you can download and use applications selected for this repository, which a
 
 </details>
 
+## 🔥 Features
+
+- 🛑 **Ad-blocking**: blocks all types of ads (who needs them anyway?).
+- 🚀 **Enhanced features**: squeezes more out of the app.
+- ⭐ **Customization**: personalize the app to fit your needs.
+- 💉 **Optimization**: optimized APKs for performance and size.
+- 🔒 **Persistent**: patched app won't be updated or overwritten by Play Store.
+- 🔄 **Auto-updates**: supports automatic updates through [Obtainium](https://github.com/ImranR98/Obtainium) using individual configs (see app list below).
+- ✨ **And much more!**
+
 ## 🔐 Verifying Authenticity
 
 To ensure that the APK files you download are genuinely compiled by this project and haven't been tampered with, you can verify the APK's certificate fingerprint. All official releases share the following SHA-256 fingerprint:
 ```text
-1894fee4df44d1823f3666db4743566d043dd72cbc13566433c1908270a4be10
+98d443d7bf2495e4faa56ed0190ad84619702d2322c0ac91c7d52ba6d676969c
 ```
 
-## 📚 Documentation & Contributing
-
-For full configuration reference, setup and contributing guide, see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-### 🤖 Build Your Own APKs
+## 🤖 Build Your Own APKs
 
 For maximum security, we recommend building and customizing your own apps by:
 
@@ -168,24 +164,9 @@ For maximum security, we recommend building and customizing your own apps by:
 - Run the [CI workflow](../../actions/workflows/ci.yml)
 - Download your APKs from [Releases](../../releases)
 
-### 🔒 Verifying authenticity
+## 📚 Documentation & Contributing
 
-For those of you who would like to be 100% sure that the APK files you download are genuinely mine, you can check the certificate fingerprint of the APK file. All future releases will have this SHA-256 fingerprint:
-
-```
-98d443d7bf2495e4faa56ed0190ad84619702d2322c0ac91c7d52ba6d676969c
-```
-
-### 🤝 Acknowledgments
-
-This repository is based on the [krvstek/uni-apks](https://github.com/krvstek/uni-apks) template (GPL-3.0), with the following transparent changes (see [changes](https://github.com/ngbangg/builder-for-morphe/commits/main/?author=nvbangg)):
-
-- Support for more apps
-- Support for automatically building only changed apps
-- No manual configuration required for each `brand` in `ci.yml`
-- Automatic upstream sync support
-- GitHub Pages deployment support
-- Other changes contributed upstream: [Pull Requests](https://github.com/krvstek/uni-apks/commits/main/?author=nvbangg), [co-authored commits](https://github.com/search?q=repo%3Akrvstek%2Funi-apks+Co-authored-by%3A+nvbangg&type=commits)
+For full configuration reference, setup and contributing guide, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## ⚠️ Disclaimer
 
@@ -194,6 +175,16 @@ This repository is based on the [krvstek/uni-apks](https://github.com/krvstek/un
 - Everything happens through the **public GitHub Actions** to ensure security and transparency. For maximum security, you can always build the applications yourself using the provided source code or official methods.
 - The build code is a **complete Python rewrite** based on an adaptation that was first implemented by *[j-hc](https://github.com/j-hc)*. All credits go to him for laying down the initial foundation.
 - This repository only provides pre-built APKs. If a build fails due to upstream app or patch changes, please report it to the patch creators or wait for an update.
+
+## 🤝 Acknowledgments
+
+This repository is based on the [krvstek/uni-apks](https://github.com/krvstek/uni-apks) template (GPL-3.0), with the following transparent changes (see [changes](https://github.com/ngbangg/builder-for-morphe/commits/main/?author=nvbangg)):
+
+- Support for more apps
+- No manual configuration required for each `brand` in `ci.yml`
+- Automatic upstream sync support
+- GitHub Pages deployment support
+- Other changes contributed upstream: [Pull Requests](https://github.com/krvstek/uni-apks/commits/main/?author=nvbangg), [co-authored commits](https://github.com/search?q=repo%3Akrvstek%2Funi-apks+Co-authored-by%3A+nvbangg&type=commits)
 
 ---
 
