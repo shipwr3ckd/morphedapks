@@ -5,39 +5,52 @@ uptodown-dlurl = "https://youtube.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube"
 patcher-args = "-e 'Change header' -Ocustom=icons/YouTube/header -e 'Custom branding' -OcustomIcon=icons/YouTube/branding -OcustomName=Morphe"
 
+[YouTube.patches]
+"github:MorpheApp/morphe-patches" = []
+
 [Music]
 uptodown-dlurl = "https://youtube-music.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
 patcher-args = "-e 'Change header' -Ocustom=icons/Music/header -e 'Custom branding' -OcustomIcon=icons/Music/branding -OcustomName='Morphe Music'"
 arch = "both"
 
+[Music.patches]
+"github:MorpheApp/morphe-patches" = []
+
 [Reddit]
 uptodown-dlurl = "https://reddit-official-app.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/redditinc/reddit"
 patcher-args = "-e 'Custom branding name for Reddit' -OappName='Morphe Reddit'"
 
+[Reddit.patches]
+"github:MorpheApp/morphe-patches" = []
+
 [X]
 # uptodown-dlurl = "https://twitter.en.uptodown.com/android"
 # apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter"
 github-dlurl = "https://github.com/krvstek/uni-storage/releases/tag/x-twitter"
-patches-source = "github:crimera/piko"
 brand = "Piko"
-included-patches = "'Browse tweet object' 'Dynamic color'"
 skip-sigcheck = true
+
+[X.patches]
+"github:crimera/piko" = ["Browse tweet object", "Dynamic color"]
 
 [Twitter]
 # uptodown-dlurl = "https://twitter.en.uptodown.com/android"
 # apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter"
 github-dlurl = "https://github.com/krvstek/uni-storage/releases/tag/x-twitter"
-patches-source = "github:crimera/piko"
 brand = "Piko"
-included-patches = "'Bring back twitter' 'Browse tweet object' 'Dynamic color'"
 skip-sigcheck = true
+
+[Twitter.patches]
+"github:crimera/piko" = ["Bring back twitter", "Browse tweet object", "Dynamic color"]
 
 [Instagram]
 # uptodown-dlurl = "https://instagram.en.uptodown.com/android"
 # apkmirror-dlurl = "https://www.apkmirror.com/apk/instagram/instagram-instagram"
 github-dlurl = "https://github.com/krvstek/uni-storage/releases/tag/instagram"
-patches-source = "github:crimera/piko"
 brand = "Piko"
 arch = "arm64-v8a"
+
+[Instagram.patches]
+"github:crimera/piko" = []
