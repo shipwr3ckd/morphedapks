@@ -37,7 +37,6 @@ brand = "Piko"
 [Twitter]
 uptodown-dlurl = "https://twitter.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/x-corp/twitter"
-github-dlurl = "https://github.com/krvstek/uni-storage/releases/tag/x-twitter"
 brand = "Piko"
 
 [Twitter.patches]
