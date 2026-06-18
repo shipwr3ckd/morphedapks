@@ -122,7 +122,6 @@ brand = "lyyako"
 uptodown-dlurl = "https://realme-link.en.uptodown.com/android"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/realme-mobile/realme-link/"
 version = "auto"
-arch = "auto"
 changelog-keywords = []
 
 [Realme-Link.patches]
