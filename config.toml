@@ -26,7 +26,7 @@ arch = "arm64-v8a"
 patcher-args = "-e 'Change version code' -OversionCode=2147483647"
 changelog-keywords = ["Twitter"]
 
-[X.patches]
+[Twitter.patches]
 "github:crimera/piko" = { version = "dev", include = ["Disunify xchat system", "Dynamic color"], exclude = ["Pause search suggestions", "Show sensitive media"] }
 "gitlab:inotia00/piko-shim" = []
 
