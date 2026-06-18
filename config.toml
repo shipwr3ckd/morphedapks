@@ -86,7 +86,7 @@ patcher-args = "-e 'Change package name' -OpackageName=app.morphe.android.youtub
 changelog-keywords = ["YouTube"]
 
 [YouTube.patches]
-"github:MorpheApp/morphe-patches" = [ version = "dev" ]
+"github:MorpheApp/morphe-patches" = { version = "dev" }
 
 [Truecaller]
 enabled = true
