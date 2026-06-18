@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 
-from src.core.logger import IS_GITHUB, abort, wpr
+from src.core.logger import IS_GITHUB, abort
 
 
 def _require_ci(script: str) -> None:
@@ -10,32 +10,17 @@ def _require_ci(script: str) -> None:
 
 def _parse_log_file(log: Path, green_lines: list[str], collected: list[str]) -> str:
     microg_line = ""
-    capturing = False
-    current: list[str] = []
-    with log.open("r", encoding="utf-8") as f:
-        for raw in f:
-            line = raw.strip()
-            if not line:
-                continue
-
-            if line.startswith("- 🟢"):
-                green_lines.append(f"{line}  ")
-            elif not microg_line and line.startswith("▶️") and "MicroG" in line:
-                microg_line = line
-
-            if line.startswith(">") and "CLI:" in line:
-                capturing = True
-                current = []
-
-            if capturing:
-                current.append(f"{line}  ")
-                if line.startswith("[") and "Changelog]" in line:
-                    collected.append("\n".join(current))
-                    capturing = False
-
-    if capturing:
-        wpr(f"Unclosed CLI section in '{log}', changelog end marker not found")
-
+    lines = [ln.strip() for ln in log.read_text(encoding="utf-8").splitlines() if ln.strip()]
+    for i, line in enumerate(lines):
+        if line.startswith("- 🟢"):
+            green_lines.append(f"{line}  ")
+        elif not microg_line and line.startswith("▶️") and "MicroG" in line:
+            microg_line = line
+        elif line.startswith("> ⚙️ » CLI:"):
+            collected.append(f"{line}  ")
+        elif line.startswith("> ⚙️ » Patches:"):
+            next_line = lines[i + 1] if i + 1 < len(lines) else ""
+            collected.append(f"{line}  \n{next_line}  ".strip())
     return microg_line
 
 def combine_logs(logs_dir: Path | str) -> None:

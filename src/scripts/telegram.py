@@ -11,10 +11,10 @@ def _require_ci(script: str) -> None:
     if not IS_GITHUB:
         abort(f"'{script}' is only available in GitHub Actions")
 
-def _parse_final_md(final_md: Path) -> tuple[list[str], str, str]:
+def _parse_final_md(final_md: Path) -> tuple[list[str], str, list[str]]:
     green_lines: list[str] = []
     microg_line: str = ""
-    changelog_line: str = ""
+    changelog_lines: list[str] = []
     for line in final_md.read_text(encoding="utf-8").splitlines():
         stripped = line.strip()
         if stripped.startswith("- 🟢"):
@@ -22,17 +22,23 @@ def _parse_final_md(final_md: Path) -> tuple[list[str], str, str]:
         elif stripped.startswith("▶️"):
             microg_line = stripped
         elif stripped.startswith("[🔗"):
-            changelog_line = stripped
+            if m := re.search(r"\[(.*?)\]\((.*?)\)", stripped):
+                link_text, url = m.group(1), m.group(2)
+                org = url.split("/")[3] if url.count("/") >= 3 else ""
+                changelog_lines.append(f"[{link_text} ({org})]({url})" if org else stripped)
+            else:
+                changelog_lines.append(stripped)
 
-    return green_lines, microg_line, changelog_line
+    return green_lines, microg_line, changelog_lines
 
-def _build_message(brand: str, green_lines: list[str], microg_line: str, changelog_line: str) -> str:
+def _build_message(brand: str, green_lines: list[str], microg_line: str, changelog_lines: list[str]) -> str:
     parts: list[str] = [f"*New build! ({brand.capitalize()})*", ""]
     parts.extend(green_lines)
     if microg_line:
         parts.extend(["", microg_line])
-    if changelog_line:
-        parts.extend(["", changelog_line])
+    if changelog_lines:
+        parts.append("")
+        parts.extend(changelog_lines)
 
     return "\n".join(parts)
 
@@ -48,12 +54,12 @@ def notify(brand: str, final_md_path: str = "final.md") -> None:
         epr(f"'{final_md_path}' not found or empty, skipping notification")
         return
 
-    green_lines, microg_line, changelog_line = _parse_final_md(path)
+    green_lines, microg_line, changelog_lines = _parse_final_md(path)
     if not green_lines:
         epr("No build results found in final.md, skipping notification")
         return
 
-    msg = _build_message(brand, green_lines, microg_line, changelog_line)
+    msg = _build_message(brand, green_lines, microg_line, changelog_lines)
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {"chat_id": chat, "text": msg, "parse_mode": "Markdown", "link_preview_options": {"is_disabled": True}}
     pr(f"Sending Telegram notification for '{brand}' to '{chat}'")

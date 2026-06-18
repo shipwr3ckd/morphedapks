@@ -14,9 +14,7 @@ VALID_ARCHES: frozenset[str] = frozenset({"both", "all", "arm64-v8a", "armeabi-v
 @dataclass(slots=True, frozen=True)
 class Config:
     parallel_jobs: int
-    patches_version: str
     cli_version: str
-    patches_source: str
     cli_source: str
     brand: str
     strict_sigcheck: bool
@@ -31,12 +29,9 @@ class AppEntry:
     version: str
     dl_urls: dict[str, str]
     patcher_args: list[str]
-    included_patches: list[str]
-    excluded_patches: list[str]
+    patches: dict[str, dict]
     exclusive_patches: bool
-    patches_source: str
     cli_source: str
-    patches_version: str
     cli_version: str
     skip_sigcheck: bool
     enabled: bool
@@ -56,9 +51,7 @@ def parse_config(data: dict[str, object]) -> Config:
     return Config(
         parallel_jobs=int(data.get("parallel-jobs", os.process_cpu_count() or 1)),
         brand=str(data.get("brand", "Morphe")),
-        patches_version=str(data.get("patches-version", "latest")),
         cli_version=str(data.get("cli-version", "latest")),
-        patches_source=str(data.get("patches-source", "github:MorpheApp/morphe-patches")),
         cli_source=str(data.get("cli-source", "github:MorpheApp/morphe-cli")),
         strict_sigcheck=_parse_bool(data, "strict-sigcheck", True),
     )
@@ -78,11 +71,15 @@ def parse_app_entries(data: dict[str, object], main: Config) -> list[AppEntry]:
             if isinstance(url, str):
                 dl_urls[src] = url.rstrip("/").removesuffix("download").rstrip("/")
 
-        inc_raw = str(t.get("included-patches", ""))
-        exc_raw = str(t.get("excluded-patches", ""))
-        for name, raw in (("included-patches", inc_raw), ("excluded-patches", exc_raw)):
-            if raw and "'" not in raw:
-                raise ValueError(f"Patch names inside {name} for '{table_name}' must be quoted")
+        raw_patches = t.get("patches", {})
+        if not isinstance(raw_patches, dict):
+            raise ValueError(f"'patches' for '{table_name}' must be a TOML table")
+        patches: dict[str, dict] = {}
+        for k, v in raw_patches.items():
+            if isinstance(v, list):
+                patches[str(k)] = {"version": "latest", "include": [str(p) for p in v], "exclude": []}
+            elif isinstance(v, dict):
+                patches[str(k)] = {"version": str(v.get("version", "latest")), "include": [str(p) for p in v.get("include", [])], "exclude": [str(p) for p in v.get("exclude", [])]}
 
         raw_keywords = t.get("changelog-keywords")
         if raw_keywords is not None and not isinstance(raw_keywords, list):
@@ -98,12 +95,9 @@ def parse_app_entries(data: dict[str, object], main: Config) -> list[AppEntry]:
             version=str(t.get("version", "auto")),
             dl_urls=dl_urls,
             patcher_args=shlex.split(str(t.get("patcher-args", ""))),
-            included_patches=shlex.split(inc_raw),
-            excluded_patches=shlex.split(exc_raw),
+            patches=patches,
             exclusive_patches=_parse_bool(t, "exclusive-patches", False),
-            patches_source=str(t.get("patches-source", main.patches_source)),
             cli_source=str(t.get("cli-source", main.cli_source)),
-            patches_version=str(t.get("patches-version", main.patches_version)),
             cli_version=str(t.get("cli-version", main.cli_version)),
             skip_sigcheck=_parse_bool(t, "skip-sigcheck", False),
             enabled=_parse_bool(t, "enabled", True),

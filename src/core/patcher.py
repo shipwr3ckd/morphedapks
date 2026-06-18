@@ -1,3 +1,4 @@
+import contextlib
 import os
 import re
 import shutil
@@ -47,9 +48,9 @@ def _redact_args(args: list[str | Path]) -> list[str]:
     return [_SECRET_PATTERNS.sub(r"\1***", str(a)) for a in args]
 
 class PatcherCLI:
-    def __init__(self, cli_jar: Path, patches_mpp: Path, apksigner: Path, ks_path: Path | None = None, sig_file: Path = Path("sig.txt")) -> None:
+    def __init__(self, cli_jar: Path, mpp_map: dict[tuple[str, str], Path], apksigner: Path, ks_path: Path | None = None, sig_file: Path = Path("sig.txt")) -> None:
         self.cli_jar = cli_jar
-        self.patches_mpp = patches_mpp
+        self.mpp_map = mpp_map
         self.apksigner = apksigner
         self.ks_path = ks_path
         self._signatures: dict[str, str] = {}
@@ -63,13 +64,18 @@ class PatcherCLI:
         return bool(expected and expected.strip())
 
     def list_patches(self, pkg_name: str) -> str:
-        return _run_java("-jar", self.cli_jar, "list-patches", "--patches", self.patches_mpp, "-f", pkg_name, "-v", "-p", timeout=60)
+        return "".join(_run_java("-jar", self.cli_jar, "list-patches", "--patches", mpp, "-f", pkg_name, "-v", "-p", timeout=60) for mpp in self.mpp_map.values())
 
     def list_versions(self, pkg_name: str) -> str:
-        return _run_java("-jar", self.cli_jar, "list-versions", "--patches", self.patches_mpp, "-f", pkg_name, timeout=60)
+        parts = []
+        for mpp in self.mpp_map.values():
+            with contextlib.suppress(PatcherError):
+                parts.append(_run_java("-jar", self.cli_jar, "list-versions", "--patches", mpp, "-f", pkg_name, timeout=60))
+        return "\n".join(parts)
 
-    def get_last_supported_version(self, list_patches_output: str, pkg_name: str, included_patches: list[str]) -> str | None:
-        if included_patches and (all_vers := [v for p in included_patches for v in _parse_patch_block(list_patches_output, p)]):
+    def get_last_supported_version(self, list_patches_output: str, pkg_name: str, patches: dict[str, dict]) -> str | None:
+        all_included = [p for spec in patches.values() for p in spec["include"]]
+        if all_included and (all_vers := [v for p in all_included for v in _parse_patch_block(list_patches_output, p)]):
             return get_highest_ver(all_vers)
 
         versions_output = self.list_versions(pkg_name)
@@ -77,7 +83,7 @@ class PatcherCLI:
             return None
 
         if not (versions := _parse_versions_output(versions_output)):
-            raise PatcherError(f"No patches found for '{pkg_name}' in patches '{self.patches_mpp}'")
+            raise PatcherError(f"No patches found for '{pkg_name}'")
         return get_highest_ver(versions)
 
     def resolve_auto_patches(self, list_patches_output: str) -> tuple[str, str]:
@@ -95,16 +101,18 @@ class PatcherCLI:
 
         return microg_patch, psu_patch
 
-    def build_patch_args(self, included_patches: list[str], excluded_patches: list[str], exclusive: bool, extra_args: list[str], arch: str, auto_patches: list[str], force: bool = False) -> list[str]:
+    def build_patch_args(self, patches: dict[str, dict], extra_args: list[str], arch: str, auto_patches: tuple[str, str], exclusive: bool = False, force: bool = False) -> list[str]:
         active_auto = {p for p in auto_patches if p}
         p_args: list[str] = ["-f"] if force else []
-        for patch_list, flag, action in ((excluded_patches, "-d", "exclude"), (included_patches, "-e", "include")):
-            for p in patch_list:
+        for src, spec in patches.items():
+            p_args.extend(("--patches", str(self.mpp_map[(src, spec["version"])])))
+            for p in spec["include"]:
                 if p in active_auto:
-                    wpr(f"You can't {action} '{p}' patch as that's done by builder automatically")
+                    wpr(f"You can't include '{p}' patch as that's done by builder automatically")
                 else:
-                    p_args.extend((flag, p))
-
+                    p_args.extend(("-e", p))
+            for p in spec["exclude"]:
+                p_args.extend(("-d", p))
         if exclusive:
             p_args.append("--exclusive")
 
@@ -116,7 +124,7 @@ class PatcherCLI:
 
     def patch(self, stock_apk: Path, output_apk: Path, patch_args: list[str]) -> None:
         tmp_files_dir = output_apk.parent / f"tmp-{output_apk.stem}"
-        base_cmd = ["-jar", self.cli_jar, "patch", stock_apk, "--purge", "-o", output_apk, "-p", self.patches_mpp, "-t", tmp_files_dir]
+        base_cmd = ["-jar", self.cli_jar, "patch", stock_apk, "--purge", "-o", output_apk, "-t", tmp_files_dir]
         ks_args: list[str] = []
         if self.ks_path and (ks_pass := os.getenv("KEYSTORE_PASS")) and (ks_alias := os.getenv("KEYSTORE_ALIAS")):
             ks_args = [f"--keystore={self.ks_path}", f"--keystore-entry-password={ks_pass}", f"--keystore-password={ks_pass}", f"--signer={ks_alias}", f"--keystore-entry-alias={ks_alias}"]

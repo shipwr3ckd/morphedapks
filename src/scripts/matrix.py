@@ -49,7 +49,7 @@ def get_matrix(source: str) -> None:
     has_changelog_keywords = False
     for entry in parse_app_entries(data, main_cfg):
         if entry.enabled and entry.brand.lower() == source_lower:
-            patches_source = entry.patches_source
+            patches_source = next(iter(entry.patches), "")
             if entry.changelog_keywords:
                 has_changelog_keywords = True
                 break
@@ -94,7 +94,7 @@ def check_builds_needed(force_all: bool = False) -> None:
             continue
         brand = entry.brand.lower()
         if brand not in seen:
-            seen[brand] = entry.patches_source
+            seen[brand] = next(iter(entry.patches), "")
 
     if not seen:
         print(json.dumps([]))

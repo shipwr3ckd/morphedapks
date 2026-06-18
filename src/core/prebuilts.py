@@ -1,6 +1,5 @@
 import json
 import re
-from dataclasses import dataclass
 from pathlib import Path
 
 from src.core.config import TEMP_DIR
@@ -13,11 +12,6 @@ _KNOWN_PREFIXES = ("gitlab:", "github:")
 
 class PrebuiltsError(Exception):
     pass
-
-@dataclass(slots=True, frozen=True)
-class Prebuilts:
-    cli_jar: Path
-    patches_mpp: Path
 
 def _ver_key(ver: str) -> tuple[int, ...]:
     base = ver.split("-")[0]
@@ -36,23 +30,25 @@ def get_highest_ver(versions: list[str]) -> str:
 
     return max(clean, key=_ver_key)
 
-def fetch_prebuilts(cli_src: str, cli_ver: str, patches_src: str, patches_ver: str, net: NetworkManager) -> Prebuilts:
-    patches_org = _strip_src_prefix(patches_src).split("/")[0]
+def fetch_cli(cli_src: str, cli_ver: str, net: NetworkManager) -> Path:
     cli_org = _strip_src_prefix(cli_src).split("/")[0]
-    cl_dir = TEMP_DIR / patches_org.lower()
     cli_dir = TEMP_DIR / cli_org.lower()
-    cl_dir.mkdir(parents=True, exist_ok=True)
     cli_dir.mkdir(parents=True, exist_ok=True)
+    jar, changelog = _fetch_single_asset(cli_src, "CLI", cli_ver, "cli", "jar", cli_dir, net)
+    if changelog:
+        with (cli_dir / "changelog.md").open("a", encoding="utf-8") as f:
+            f.write(changelog)
+    return jar
 
-    pr(f"Getting prebuilts ({patches_org})")
-    cli_jar, cli_cl = _fetch_single_asset(cli_src, "CLI", cli_ver, "cli", "jar", cli_dir, net)
-    patches_mpp, patches_cl = _fetch_single_asset(patches_src, "Patches", patches_ver, "patches", "mpp", cl_dir, net)
-    combined = cli_cl + patches_cl
-    if combined:
+def fetch_mpp(src: str, ver: str, net: NetworkManager) -> Path:
+    org = _strip_src_prefix(src).split("/")[0]
+    cl_dir = TEMP_DIR / org.lower()
+    cl_dir.mkdir(parents=True, exist_ok=True)
+    mpp, changelog = _fetch_single_asset(src, "Patches", ver, "patches", "mpp", cl_dir, net)
+    if changelog:
         with (cl_dir / "changelog.md").open("a", encoding="utf-8") as f:
-            f.write(combined)
-
-    return Prebuilts(cli_jar=cli_jar, patches_mpp=patches_mpp)
+            f.write(changelog)
+    return mpp
 
 def _get_target_asset(assets: list, ext: str, src: str, ver: str) -> dict:
     matches = [a for a in assets if a.get("name", "").endswith(f".{ext}")]
@@ -86,13 +82,12 @@ def _fetch_single_asset(src: str, tag: str, ver: str, fprefix: str, ext: str, cl
 
     if file := _find_cached(cl_dir, fprefix, ver, ext, exclude_dev=False):
         tag_name = _tag_from_filename(file)
+        changelog = f"> ⚙️ » {tag}: `{clean_src.split('/')[0]}/{file.name}`  \n"
         if tag == "Patches" and tag_name:
             if gitlab:
-                changelog = f"[🔗 » Changelog](https://gitlab.com/{clean_src}/-/releases/{tag_name})\n\n"
+                changelog += f"[🔗 » Changelog](https://gitlab.com/{clean_src}/-/releases/{tag_name})\n\n"
             else:
-                changelog = f"[🔗 » Changelog](https://github.com/{clean_src}/releases/tag/{tag_name})\n\n"
-        else:
-            changelog = ""
+                changelog += f"[🔗 » Changelog](https://github.com/{clean_src}/releases/tag/{tag_name})\n\n"
         return file, changelog
 
     if release is None:

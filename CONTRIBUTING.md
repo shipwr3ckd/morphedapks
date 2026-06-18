@@ -42,6 +42,13 @@ All configuration lives in `config.toml` in the project root. Top-level keys def
 apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
 # uptodown-dlurl = "https://app.en.uptodown.com/android"
 # github-dlurl = "https://github.com/owner/repo/releases/tag/app"
+
+[SomeApp.patches]
+# Simple form - fetches latest version, applies listed patches
+"github:owner/some-patches" = ["Patch name A", "Patch name B"]
+
+# Full form - pin a specific version and/or list patches to include
+"github:owner/some-other-patches" = { version = "v1.2.3", include = ["Patch name C"] }
 ```
 
 1. 📱 **Available options**:
@@ -50,9 +57,7 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
 |:------:|:--------------:|:----------:|:--------:|
 | `parallel-jobs` | Number of concurrent builds | `CPU count` | Global |
 | `brand` | Used in output filenames | `Morphe` | Global / Per-app |
-| `patches-version` | Patches version to fetch (`latest`, `dev`, or a specific version string) | `latest` | Global / Per-app |
 | `cli-version` | CLI version to fetch (`latest`, `dev`, or a specific version string) | `latest` | Global / Per-app |
-| `patches-source` | GitHub or GitLab repo for patches (`github:owner/repo` or `gitlab:owner/repo`) | `github:MorpheApp/morphe-patches` | Global / Per-app |
 | `cli-source` | GitHub or GitLab repo for CLI (`github:owner/repo` or `gitlab:owner/repo`) | `github:MorpheApp/morphe-cli` | Global / Per-app |
 | `strict-sigcheck` | Fail the build if an app is missing from `sig.txt` (see note below) | `true` | **Global only** |
 | `app-name` | Display name used in output filename | `table name` | Per-app |
@@ -62,16 +67,21 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
 | `apkmirror-dlurl` | APKMirror page URL | `-` | Per-app |
 | `uptodown-dlurl` | Uptodown page URL | `-` | Per-app |
 | `github-dlurl` | GitHub Releases page URL | `-` | Per-app |
-| `included-patches` | Patches to include - names must be single-quoted | `-` | Per-app |
-| `excluded-patches` | Patches to exclude - names must be single-quoted | `-` | Per-app |
-| `exclusive-patches` | Only apply `included-patches`, exclude everything else | `false` | Per-app |
+| `exclusive-patches` | Only apply patches listed in `[AppName.patches]`, exclude everything else | `false` | Per-app |
 | `patcher-args` | Extra arguments passed directly to Morphe CLI | `-` | Per-app |
 | `skip-sigcheck` | Completely bypasses signature checks for this app (see note below) | `false` | **Per-app only** |
 | `enabled` | Set to `false` to skip this entry | `true` | Per-app |
 
-> [!NOTE]
-> If a patch name contains a single quote, you must wrap the specific patch name in escaped double quotes.  
-> Example: `included-patches = "'Example patch' \"Hide 'Example button'\" 'Another example patch'"`
+**`[AppName.patches]` table** - defines which patch bundles to use and which patches to apply from each:
+
+| Field | Description | Default |
+|:-----:|:-----------:|:-------:|
+| key | Patch source (`github:owner/repo` or `gitlab:owner/repo`) | - |
+| `version` | Version to fetch (`latest`, `dev`, or a specific tag) | `latest` |
+| `include` | List of patch names to apply from this source. Empty list applies all patches | `[]` |
+| `exclude` | List of patch names to explicitly disable from this source | `[]` |
+
+Each patch source is fetched exactly once and reused across all apps that reference the same `(source, version)` pair.
 
 2. 🔏 **Signature verification flags**:
 
@@ -102,7 +112,7 @@ A list of keyword strings to search for in the release notes. If not specified, 
 
 4. ➕ **Adding a new patch source**:
 
-- Add your app entries to `config.toml` with the appropriate `patches-source` and `brand` fields (see the configuration table above for all available options).
+- Add your app entries to `config.toml` with a `[AppName.patches]` table pointing to your patch repo, and set `brand` accordingly (see the configuration table above for all available options).
 
 5. 🔑 **Keystore**:
 
