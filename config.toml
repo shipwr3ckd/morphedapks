@@ -9,6 +9,7 @@ github-dlurl = "https://github.com/krvstek/uni-storage/releases/tag/instagram"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/instagram/instagram-instagram/"
 version = "auto"
 arch = "arm64-v8a"
+exclusive-patches = true
 patcher-args = "-e 'Change version code' -OversionCode=2147483647"
 changelog-keywords = ["Instagram"]
 
