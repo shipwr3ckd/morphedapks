@@ -13,7 +13,8 @@ patcher-args = "-e 'Change version code' -OversionCode=2147483647"
 changelog-keywords = ["Instagram"]
 
 [Instagram.patches]
-"github:crimera/piko" = { version = "dev", exclude = ["Improve image viewing", "Unlock Plus benefits"] }
+"github:crimera/piko" = { version = "dev", exclude = ["Improve image viewing", "Unlock Plus benefits", "Hide suggested content"] }
+"github:brosssh/morphe-patches" = { version = "dev", include = ["Hide suggested content"] }
 
 [Twitter]
 enabled = true
