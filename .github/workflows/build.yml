@@ -9,13 +9,13 @@ on:
         type: choice
         options:
           - morphe
-          - morphe-dev
           - piko
           - hoo-dles
           - paresh
-          - rushi
           - de-vanced
-          - anddea
+          - lyyako
+          - icysymmetra
+          - quantavil
   workflow_call:
     inputs:
       patch_source:
