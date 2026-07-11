@@ -60,7 +60,7 @@ changelog-keywords = ["Photos"]
 "github:MorpheApp/morphe-patches" = []
 
 [ProtonMail]
-enabled = true
+enabled = false
 app-name = "Proton Mail"
 brand = "de-vanced"
 uptodown-dlurl = "https://protonmail.en.uptodown.com/android/"
@@ -108,12 +108,11 @@ brand = "hoo-dles"
 uptodown-dlurl = "https://camscanner-pdf-creator.en.uptodown.com/android/"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/intsig-pte/camscanner-phone-pdf-creator/"
 version = "auto"
-patcher-args = "-e 'Change package name' -OpackageName=com.morphe.intsig.camscanner"
+# patcher-args = "-e 'Change package name' -OpackageName=com.morphe.intsig.camscanner"
 changelog-keywords = ["CamScanner"]
 
 [CamScanner.patches]
 "github:hoo-dles/morphe-patches" = []
-"github:MorpheApp/morphe-patches" = []
 
 [Realme-Link]
 enabled = true
