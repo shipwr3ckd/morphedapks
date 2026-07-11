@@ -113,6 +113,7 @@ changelog-keywords = ["CamScanner"]
 
 [CamScanner.patches]
 "github:hoo-dles/morphe-patches" = []
+"github:MorpheApp/morphe-patches" = []
 
 [Realme-Link]
 enabled = true
