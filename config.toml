@@ -1,3 +1,5 @@
+cli-version = "dev" 
+
 [Instagram]
 enabled = true
 app-name = "Instagram"
@@ -102,7 +104,7 @@ changelog-keywords = ["truecaller"]
 "github:MorpheApp/morphe-patches" = []
 
 [CamScanner]
-enabled = true
+enabled = false
 app-name = "CamScanner"
 brand = "hoo-dles"
 uptodown-dlurl = "https://camscanner-pdf-creator.en.uptodown.com/android/"
