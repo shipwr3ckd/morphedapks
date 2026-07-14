@@ -1,4 +1,5 @@
 cli-version = "dev" 
+cli-source = "github:MorpheApp/morphe-cli"
 
 [Instagram]
 enabled = true
