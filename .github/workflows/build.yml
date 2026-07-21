@@ -14,6 +14,7 @@ on:
           - paresh
           - de-vanced
           - lyyako
+          - bufferk
           - icysymmetra
           - quantavil
   workflow_call:
