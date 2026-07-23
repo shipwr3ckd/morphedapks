@@ -14,7 +14,7 @@ patcher-args = "-e 'Change version code' -OversionCode=2147483647 -O Theme:amole
 changelog-keywords = ["Instagram"]
 
 [Instagram.patches]
-"github:crimera/piko" = { version = "dev", exclude = ["Improve image viewing", "Unlock Plus benefits", "Hide suggested content"] }
+"github:crimera/piko" = { version = "dev", include = ["Theme"], exclude = ["Improve image viewing", "Unlock Plus benefits", "Hide suggested content"] }
 "github:brosssh/morphe-patches" = { version = "dev", include = ["Hide Instants"], exclude = ["Disable Reels scrolling", "Disable story auto flipping", "Hide ads", "Hide explore feed", "Hide navigation buttons", "Hide notes tray", "Hide reshare button", "Limit feed to following profiles", "Remove build expired popup" ] }
 
 [Twitter]
