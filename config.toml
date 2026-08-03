@@ -164,7 +164,7 @@ app-name = "Brave"
 brand = "bufferk"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/brave-software/brave-browser/"
 uptodown-dlurl = "https://brave-software-brave.en.uptodown.com/android"
-version = "latest"
+version = "1.93.130"
 arch = "arm64-v8a"
 changelog-keywords = ["brave"]
 
