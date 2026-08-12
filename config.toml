@@ -90,6 +90,20 @@ changelog-keywords = ["YouTube"]
 [YouTube.patches]
 "github:MorpheApp/morphe-patches" = { version = "dev" }
 
+[YouTube-Music]
+enabled = true
+app-name = "YouTube Music"
+brand = "morphe"
+uptodown-dlurl = "https://youtube-music.en.uptodown.com/android/"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
+version = "exp"
+arch = "arm64-v8a"
+patcher-args = "-e 'Change package name' -OpackageName=com.morphe.google.android.apps.youtube.music"
+changelog-keywords = ["Youtube Music"]
+
+[YouTube-Music.patches]
+"github:MorpheApp/morphe-patches" = { version = "dev" }
+
 [Truecaller]
 enabled = true
 app-name = "Truecaller"
