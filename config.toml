@@ -91,7 +91,7 @@ changelog-keywords = ["YouTube"]
 "github:MorpheApp/morphe-patches" = { version = "dev" }
 
 [YouTube-Music]
-enabled = true
+enabled = false
 app-name = "YouTube Music"
 brand = "morphe"
 uptodown-dlurl = "https://youtube-music.en.uptodown.com/android/"
