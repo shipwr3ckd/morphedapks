@@ -20,7 +20,7 @@ from bs4 import BeautifulSoup
 from src.core.network import NetworkManager
 
 
-def _parse_html(html: str) -> BeautifulSoup:
+def parse_html(html: str) -> BeautifulSoup:
     return BeautifulSoup(html, "html.parser")
 
 class ScraperError(Exception):
@@ -51,5 +51,5 @@ class BaseScraper(ABC):
         pass
 
     @abstractmethod
-    def download(self, url: str, version: str, dest: Path, arch: str, dpi: str) -> DownloadResult:
+    def download(self, url: str, version: str, dest: Path, arch: str, dpi: str, version_code: str | None = None) -> DownloadResult:
         pass
