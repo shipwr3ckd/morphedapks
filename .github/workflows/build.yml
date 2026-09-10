@@ -15,6 +15,10 @@ on:
           - hooman
           - paresh
           - de-vanced
+          - lyyako
+          - bufferk
+          - icysymmetra
+          - quantavil
           - tiktok
   workflow_call:
     inputs:
