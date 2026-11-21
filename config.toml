@@ -155,7 +155,7 @@ arch = "arm64-v8a"
 changelog-keywords = []
 
 [Tiktok.patches]
-"github:icysymmetra/tiktok-patches-for-morphe" = []
+"github:icysymmetra/tiktok-patches-for-morphe" = { version = "dev", include = ["Accent color", "AMOLED dark theme", "Block P2P video relay", "Skip first-launch setup", "Remove card scanner assets", "Remove unused language packs", "Remove LIVE extras", "Remove creation tools", "Region spoof", "Hide Play Store update offer"] }
 "github:MorpheApp/morphe-patches" = []
 
 [Edge]
