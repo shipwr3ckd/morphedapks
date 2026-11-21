@@ -118,7 +118,7 @@ changelog-keywords = ["truecaller"]
 "github:MorpheApp/morphe-patches" = []
 
 [CamScanner]
-enabled = false
+enabled = true
 app-name = "CamScanner"
 brand = "hoo-dles"
 uptodown-dlurl = "https://camscanner-pdf-creator.en.uptodown.com/android/"
@@ -132,7 +132,7 @@ changelog-keywords = ["CamScanner"]
 "github:MorpheApp/morphe-patches" = []
 
 [Realme-Link]
-enabled = true
+enabled = false
 app-name = "Realme Link"
 brand = "lyyako"
 uptodown-dlurl = "https://realme-link.en.uptodown.com/android"
@@ -145,7 +145,7 @@ changelog-keywords = []
 "github:MorpheApp/morphe-patches" = []
 
 [Tiktok]
-enabled = false
+enabled = true
 app-name = "Tiktok"
 brand = "icysymmetra"
 uptodown-dlurl = "https://tiktok.en.uptodown.com/android"
@@ -173,7 +173,7 @@ changelog-keywords = []
 "github:MorpheApp/morphe-patches" = []
 
 [Brave]
-enabled = true
+enabled = false
 app-name = "Brave"
 brand = "bufferk"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/brave-software/brave-browser/"
